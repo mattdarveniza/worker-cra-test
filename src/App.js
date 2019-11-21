@@ -1,6 +1,10 @@
 import React from 'react';
+// eslint-disable-next-line
+import Worker from 'workerize-loader!./test.worker'
 import logo from './logo.svg';
 import './App.css';
+
+const worker = new Worker()
 
 function App() {
   return (
@@ -10,6 +14,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={() => {
+          worker.postMessage({})
+        }}
+        >
+          Worker
+        </button>
         <a
           className="App-link"
           href="https://reactjs.org"
